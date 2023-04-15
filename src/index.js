@@ -9,6 +9,7 @@ import ContactComponent from "./modules/components/contact";
 import OurApp from "./modules";
 import BodyComponent from "./modules/components/body";
 import Cart from "./modules/components/cart";
+import RestaurantMenu from "./modules/components/restaurantsDetail";
 
 const appRouter = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const appRouter = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <ContactComponent /> },
       { path: "/cart", element: <Cart /> },
+      { path: "/restaurant/:id", element: <RestaurantMenu /> },
     ],
   },
 ]);

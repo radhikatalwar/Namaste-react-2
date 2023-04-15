@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/body.css";
 import { data } from "../data/data";
+import { Link } from "react-router-dom";
 
 // Optional Chaining -> ?.
 const Card = ({ info }) => {
@@ -69,8 +70,12 @@ const BodyComponent = () => {
         </button>
       </div>
       <div className="body">
-        {list.map((info) => {
-          return <Card info={info} key={info.stars} />;
+        {list.map((info, index) => {
+          return (
+            <Link to={`/restaurant/${index}`} key={info.stars}>
+              <Card info={info} />
+            </Link>
+          );
         })}
       </div>
     </>
