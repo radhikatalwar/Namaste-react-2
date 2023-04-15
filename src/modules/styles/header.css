@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  border: 1px solid;
+  padding: 0 10px;
+}
+
+.header > a {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-items > ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-items > ul > a {
+  padding: 10px;
+  color: black;
+  font-weight: 500;
+}
