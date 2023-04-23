@@ -2,7 +2,7 @@ import "../styles/footer.css";
 
 const FooterComponent = () => {
   return (
-    <div className="body">
+    <div>
       <h1>Footer</h1>
     </div>
   );

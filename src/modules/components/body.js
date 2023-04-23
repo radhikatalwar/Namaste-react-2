@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/body.css";
 import { data } from "../data/data";
 import { Link } from "react-router-dom";
+import useOnline from "../hooks/useOnline";
 
 // Optional Chaining -> ?.
 const Card = ({ info }) => {
@@ -24,6 +25,7 @@ const BodyComponent = () => {
   const [searchValue, setSearchValue] = useState(""); // To create State Variable
   const [list, setList] = useState(data);
 
+  console.log(useState()[1], typeof useState()[0]);
   const filterData = () => {
     const filteredData = list.filter((item) =>
       item.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -43,6 +45,12 @@ const BodyComponent = () => {
     const json = await data.json();
     console.log(json);
     // Add data in state variable
+  }
+
+  const isOnline = useOnline();
+
+  if (isOnline) {
+    return <h1> 😅 Please Check Your Internet Connection</h1>;
   }
 
   // Early Return
