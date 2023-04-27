@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "../styles/body.css";
 import { data } from "../data/data";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/userContext";
 import useOnline from "../hooks/useOnline";
 
 // Optional Chaining -> ?.
 const Card = ({ info }) => {
   return (
-    <div className="card">
+    <div
+      // className="card"
+      className="w-[200px] border-2 border-black my-2 p-2 m-3 shadow-lg hover:bg-pink-100"
+    >
       <img src={info.img} alt="card" />
-      <h1>{info.name}</h1>
+      <h1 className="font-bold xl">{info.name}</h1>
       <h2>{info.cusine.join(" , ")}</h2>
       <h4>{info.stars} stars</h4>
     </div>
@@ -24,6 +28,7 @@ const BodyComponent = () => {
   // It is a local state variable
   const [searchValue, setSearchValue] = useState(""); // To create State Variable
   const [list, setList] = useState(data);
+  const { user, setUser } = useContext(UserContext);
 
   console.log(useState()[1], typeof useState()[0]);
   const filterData = () => {
@@ -58,26 +63,53 @@ const BodyComponent = () => {
 
   return (
     <>
-      <div className="search-container">
+      <div
+        // className="search-container"
+        className="p-2"
+      >
         <input
           type="text"
           placeholder="Search"
-          className="search"
+          // className="search"
+          className="border-2 border-black p-2 mr-2"
           value={searchValue}
           onChange={(e) => {
             setSearchValue(e.target.value);
           }}
         />
         <button
-          className="search-btn"
+          // className="search-btn"
+          className=" bg-green-800 text-white p-2 rounded-xl font-bold"
           onClick={() => {
             filterData();
           }}
         >
           Search
         </button>
+        <input
+          type="text"
+          className="border-2 border-black p-2 mx-2"
+          value={user.name}
+          onChange={(e) => {
+            setUser({
+              ...user,
+              name: e.target.value,
+            });
+          }}
+        />
+        <input
+          type="text"
+          className="border-2 border-black p-2 mx-2"
+          value={user.email}
+          onChange={(e) => {
+            setUser({
+              ...user,
+              email: e.target.value,
+            });
+          }}
+        />
       </div>
-      <div className="body">
+      <div className="flex flex-wrap">
         {list.map((info, index) => {
           return (
             <Link to={`/restaurant/${index}`} key={info.stars}>

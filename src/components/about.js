@@ -27,11 +27,14 @@ class About extends React.Component {
   render() {
     return (
       <div>
+        <h1 class="font-bold text-xl">Hello ,RADHIKA TALWAR</h1>
+        <h2 class="font-bold text-2xl">Hello ,RADHIKA TALWAR</h2>
+        <h2 class="font-bold text-3xl text-red-900">Hello ,RADHIKA TALWAR</h2>
         <>{console.log("About / render")}</>
         <h1>About Us Page</h1>
         <Outlet />
         <Profile name="Component" />
-        {/* <ProfileClass name="First Class" /> */}
+        <ProfileClass name="First Class" />
         {/* <ProfileClass name="Second Class" /> */}
       </div>
     );

@@ -3,22 +3,24 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import PageNotFound from "./modules/components/pageNotFound";
-import ContactComponent from "./modules/components/contact";
-import OurApp from "./modules";
-import BodyComponent from "./modules/components/body";
-import Cart from "./modules/components/cart";
-import RestaurantMenu from "./modules/components/restaurantsDetail";
-import Profile from "./modules/components/profile";
+import PageNotFound from "./components/pageNotFound";
+import ContactComponent from "./components/contact";
+import BodyComponent from "./components/body";
+import RestaurantDetail from "./components/restaurantsDetail";
+import Profile from "./components/profile";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import App from "./App";
 
-const Instamart = lazy(() => import("./modules/components/instaMart"));
-const About = lazy(() => import("./modules/components/about"));
+const Instamart = lazy(() => import("./components/instaMart"));
+const About = lazy(() => import("./components/about"));
+const Cart = lazy(() => import("./components/cart"));
 
 // Upon Demand Loading -> upon render -> react suspend loading
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <OurApp />,
+    element: <App />,
     errorElement: <PageNotFound />,
     children: [
       { path: "/", element: <BodyComponent /> },
@@ -33,7 +35,7 @@ const appRouter = createBrowserRouter([
       },
       { path: "/contact", element: <ContactComponent /> },
       { path: "/cart", element: <Cart /> },
-      { path: "/restaurant/:id", element: <RestaurantMenu /> },
+      { path: "/restaurant/:id", element: <RestaurantDetail /> },
       {
         path: "/instamart",
         element: (
@@ -49,7 +51,9 @@ const appRouter = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={appRouter} />
+    <Provider store={store}>
+      <RouterProvider router={appRouter} />
+    </Provider>
   </React.StrictMode>
 );
 

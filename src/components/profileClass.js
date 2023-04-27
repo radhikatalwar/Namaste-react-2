@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../utils/userContext";
 
 class ProfileClass extends React.Component {
   constructor(props) {
@@ -32,11 +33,20 @@ class ProfileClass extends React.Component {
     console.log("Profile / componentWillUnmount " + this.state.userInfo.name);
   }
 
+  // Using User Context
+
   render() {
     return (
       <>
         <h1> Profile Class Component</h1>
         {/* <>{console.log(this)}</> */}
+        <UserContext.Consumer>
+          {({ user }) => (
+            <h2>
+              {user.name} : {user.email}
+            </h2>
+          )}
+        </UserContext.Consumer>
         <>{console.log("Profile / render " + this.state.userInfo.name)}</>
         <h2>Name : {this.state.userInfo.name}</h2>
         <h3>Location : {this.state.userInfo.location}</h3>
