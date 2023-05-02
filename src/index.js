@@ -20,7 +20,11 @@ const Cart = lazy(() => import("./components/cart"));
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    ),
     errorElement: <PageNotFound />,
     children: [
       { path: "/", element: <BodyComponent /> },

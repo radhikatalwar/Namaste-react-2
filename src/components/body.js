@@ -1,18 +1,14 @@
 import { useEffect, useState, useContext } from "react";
-import "../styles/body.css";
 import { data } from "../data/data";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import useOnline from "../hooks/useOnline";
 
 // Optional Chaining -> ?.
-const Card = ({ info }) => {
+export const Card = ({ info }) => {
   return (
-    <div
-      // className="card"
-      className="w-[200px] border-2 border-black my-2 p-2 m-3 shadow-lg hover:bg-pink-100"
-    >
-      <img src={info.img} alt="card" />
+    <div className="w-[200px] border-2 border-black my-2 p-2 m-3 shadow-lg hover:bg-pink-100">
+      <img data-testid="image" src={info.img} alt="card" />
       <h1 className="font-bold xl">{info.name}</h1>
       <h2>{info.cusine.join(" , ")}</h2>
       <h4>{info.stars} stars</h4>

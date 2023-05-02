@@ -14,8 +14,11 @@ const HeaderComponent = () => {
       className="flex justify-between m-3 border-2 border-black p-2 shadow-lg"
     >
       <Link to="/">
-        <h1 className="font-bold text-4xl">Food Villa</h1>
+        <h1 className="font-bold text-4xl" data-testid="heading">
+          Food Villa
+        </h1>
       </Link>
+      <h1 data-testid="online-status">{"✅"}</h1>
       <div
       //  className="nav-items"
       >
@@ -30,7 +33,9 @@ const HeaderComponent = () => {
             <li className="p-3 font-bold underline">Contact</li>
           </Link>
           <Link to="/cart">
-            <li className="p-3 font-bold underline">Cart {item.length}</li>
+            <li className="p-3 font-bold underline" data-testid="cart">
+              Cart {item.length}
+            </li>
           </Link>
           <Link to="/instamart">
             <li className="p-3 font-bold underline">Instamart</li>
