@@ -43,8 +43,8 @@ const BodyComponent = () => {
       "API CALL"
       // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=7762448069999&page_type=DESKTOP_WEB_LISTING"
     );
-    const json = await data.json();
-    console.log(json);
+    // const json = await data.json();
+    // console.log(json);
     // Add data in state variable
   }
 
@@ -62,6 +62,7 @@ const BodyComponent = () => {
       <div
         // className="search-container"
         className="p-2"
+        data-testid="body-container"
       >
         <input
           type="text"
@@ -69,6 +70,7 @@ const BodyComponent = () => {
           // className="search"
           className="border-2 border-black p-2 mr-2"
           value={searchValue}
+          data-testid="search-input"
           onChange={(e) => {
             setSearchValue(e.target.value);
           }}
@@ -79,6 +81,7 @@ const BodyComponent = () => {
           onClick={() => {
             filterData();
           }}
+          data-testid="search-btn"
         >
           Search
         </button>
@@ -105,7 +108,7 @@ const BodyComponent = () => {
           }}
         />
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap" data-testid="res-list">
         {list.map((info, index) => {
           return (
             <Link to={`/restaurant/${index}`} key={info.stars}>
